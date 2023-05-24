@@ -1,9 +1,6 @@
 <template>
   <div class="rounded p-1 shadow-lg">
-    <img
-      src="https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-      alt="foods"
-    />
+    <img :src="image" alt="foods" />
     <div class="p-5 flex flex-col">
       <h1 class="font-bold text-xl mt-3">{{ title }}</h1>
       <p class="text-sm my-4">
@@ -17,8 +14,10 @@
 </template>
 <script setup lang="ts">
 import { ShoppingCartIcon } from '@heroicons/vue/24/solid'
+
 defineProps<{
   title: string
   body: string
+  image: string
 }>()
 </script>
