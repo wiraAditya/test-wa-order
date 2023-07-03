@@ -6,7 +6,10 @@
       <p class="text-sm my-4">
         {{ body }}
       </p>
-      <button class="bg-red-500 rounded px-4 py-2 self-end">
+      <button
+        @click="$emit('cardClick', { title: title, body: body, image: image, id: id })"
+        class="bg-red-500 rounded px-4 py-2 self-end"
+      >
         <ShoppingCartIcon class="h-6 w-6 text-white" />
       </button>
     </div>
@@ -19,5 +22,6 @@ defineProps<{
   title: string
   body: string
   image: string
+  id?: string
 }>()
 </script>

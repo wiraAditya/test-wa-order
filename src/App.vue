@@ -2,6 +2,7 @@
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 import { ShoppingCartIcon } from '@heroicons/vue/24/solid'
+import { useCartStore } from './stores/cart'
 </script>
 
 <template>
@@ -11,7 +12,7 @@ import { ShoppingCartIcon } from '@heroicons/vue/24/solid'
       <ShoppingCartIcon class="h-6 w-6 text-slate-400" />
       <span
         class="text-white font-bold button-pils text-center border-white border-2 px-1 absolute -top-1.5 right-0 bg-red-500 rounded-full flex items-center text-xs"
-        >10</span
+        >{{ useCartStore().$state.cart.length }}</span
       >
     </div>
   </header>

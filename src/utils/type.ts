@@ -1,7 +1,7 @@
 export interface ICart {
   id: string
   name: string
-  qty: string
+  qty: number
 }
 export interface iListMenu {
   id: string

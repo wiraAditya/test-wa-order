@@ -1,4 +1,5 @@
 <template>
+  <button @click="resetCart">Reset</button>
   <!-- we put looping component here -->
   <div
     class="mx-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-6 gap-4"
@@ -7,14 +8,18 @@
       v-for="(item, index) in dataList"
       :key="index"
       :image="item.imgUrl"
+      :id="item.id"
       :title="item.title"
       :body="item.title"
+      @card-click="logging"
     ></HomeCard>
   </div>
 </template>
 <script setup lang="ts">
 import HomeCard from '@/components/HomeCard.vue'
-import { iListMenu } from '@/utils/type'
+import { ICart, iListMenu } from '@/utils/type'
+import { useCartStore } from '@/stores/cart'
+import { resetTracking } from '@vue/reactivity'
 </script>
 <script lang="ts">
 interface IData {
@@ -53,6 +58,19 @@ export default {
           title: 'Menu 4'
         }
       ]
+    }
+  },
+  methods: {
+    logging(data: { title: string; body: string; image: string; id: string }) {
+      const appendData: ICart = {
+        id: data.id,
+        name: data.title,
+        qty: 1
+      }
+      useCartStore().appendCart(appendData)
+    },
+    resetCart() {
+      useCartStore().$reset()
     }
   }
 }
